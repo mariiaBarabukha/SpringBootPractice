@@ -12,11 +12,6 @@ import java.util.List;
 public class GroupService {
     @Autowired
     IGroupRepository groupRepository;
-//
-//    public GroupService(){
-//        groupRepository = new Gro
-//    }
-
 
     @Transactional
     public String addGroup(StGroup group){
@@ -33,16 +28,20 @@ public class GroupService {
     }
 
     @Transactional
-    public String updateGroup(StGroup group){
+    public String updateGroup(int id, StGroup group){
         try {
-            List<StGroup> groups = groupRepository.findById(group.getId());
-            if (groups == null){
+            List<StGroup> currentGroup = groupRepository.findById(id);
+            if (currentGroup == null){
                 throw new NullPointerException();
             }
-            groups.stream().forEach(g -> {
-                g.setFaculty(group.getFaculty());
-                g.setYearOfStudying(group.getYearOfStudying());
-                groupRepository.save(g);
+            currentGroup.stream().forEach(currGroupObj -> {
+                if(group.getFaculty() != null){
+                    currGroupObj.setFaculty(group.getFaculty());
+                }
+                if(group.getYearOfStudying() != 0){
+                    currGroupObj.setYearOfStudying(group.getYearOfStudying());
+                }
+                groupRepository.save(currGroupObj);
             });
             return "Group updated";
         }catch (Exception e){
@@ -51,14 +50,14 @@ public class GroupService {
     }
 
     @Transactional
-    public String deleteGroup(StGroup group){
+    public String deleteGroup(int id){
 
         try {
-            System.out.println(group.getId());
-            if (group == null){
+            List<StGroup> currentGroup = groupRepository.findById(id);
+            if (currentGroup == null){
                 throw new NullPointerException("group is null");
             }
-            List<StGroup> groups = groupRepository.findById(group.getId());
+            List<StGroup> groups = groupRepository.findById(id);
             if (groups == null){
                 throw new NullPointerException();
             }
@@ -69,5 +68,10 @@ public class GroupService {
         }catch (Exception e){
             return e.toString();
         }
+    }
+
+    public StGroup getGroup(Integer id) {
+        List<StGroup> groups = groupRepository.findAll();
+        return groups.stream().filter(elem -> elem.getId() == (id)).findFirst().get();
     }
 }

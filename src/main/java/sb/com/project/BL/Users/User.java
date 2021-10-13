@@ -3,12 +3,15 @@ package sb.com.project.BL.Users;
 import sb.com.project.BL.IEntity;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.UUID;
 
 @Component
 public abstract class User implements IEntity {
-    protected int idUser;
+//    protected int idUser;
     protected String firstName;
     protected String lastName;
     protected Date birthday;
@@ -21,7 +24,6 @@ public abstract class User implements IEntity {
         birthday = bd;
         phoneNumber = phone;
         this.email = email;
-        idUser = 111;
     }
 
     public User(){}

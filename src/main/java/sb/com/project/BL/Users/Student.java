@@ -3,11 +3,17 @@ package sb.com.project.BL.Users;
 import sb.com.project.BL.StGroup;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 @Component
+
 public class Student extends User implements IUser{
 
+    @Id
+    @GeneratedValue
+    private int id;
     private StGroup group;
 
     public Student(){}
