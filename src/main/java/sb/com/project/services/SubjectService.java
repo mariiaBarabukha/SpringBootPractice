@@ -35,8 +35,8 @@ public class SubjectService {
                 throw new NullPointerException();
             }
             currentSubject.stream().forEach(currSubjectObj -> {
-                if(subject.getName() != null){
-                    currSubjectObj.setName(subject.getName());
+                if(subject.getSbName() != null){
+                    currSubjectObj.setSbName(subject.getSbName());
                 }
                 if(subject.getAmountOfCredits() != 0){
                     currSubjectObj.setAmountOfCredits(subject.getAmountOfCredits());

@@ -1,9 +1,13 @@
 package sb.com.project.BL;
 import org.springframework.stereotype.Component;
+import sb.com.project.BL.Users.Student;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.LinkedList;
+import java.util.List;
 
 @Component
 @Entity
@@ -16,6 +20,14 @@ public class StGroup implements IEntity {
     private int yearOfStudying;
     private String faculty;
     private String name_group;
+
+//    @OneToMany
+//    private List<Student> students = new LinkedList<>();
+//
+//    public void addStudent(Student student){
+//        students.add(student);
+//    }
+//
 
     public static int COUNTER = 1;
 

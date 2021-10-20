@@ -3,17 +3,17 @@ package sb.com.project.BL.Users;
 import sb.com.project.BL.StGroup;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
-@Component
-
+@Entity
 public class Student extends User implements IUser{
 
     @Id
     @GeneratedValue
     private int id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private StGroup group;
 
     public Student(){}

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.UUID;
 
 @Component
 @Entity
@@ -14,7 +13,7 @@ public class Subject implements IEntity {
     @Id
     @GeneratedValue
     private int id;
-    private String name;
+    private String sbName;
     private int amountOfCredits;
 
     public Subject(){}
@@ -23,12 +22,12 @@ public class Subject implements IEntity {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getSbName() {
+        return sbName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSbName(String sbName) {
+        this.sbName = sbName;
     }
 
     public int getAmountOfCredits() {
@@ -40,7 +39,7 @@ public class Subject implements IEntity {
     }
 
     public Subject(String name, int amountOfCredits){
-        this.name = name;
+        this.sbName = name;
         this.amountOfCredits = amountOfCredits;
     }
 }

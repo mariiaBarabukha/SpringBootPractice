@@ -29,7 +29,7 @@ public class Schedule {
                 lectures) {
             try {
                 String text = String.format("%s | %s | %s | %d | %s | %d\n", lec.getLecturer().getFullName(),
-                        lec.getGroup().getName_group(), lec.getSubject().getName(), lec.getAudienceNum(),
+                        lec.getGroup().getName_group(), lec.getSubject().getSbName(), lec.getAudienceNum(),
                         lec.getWeekDay().toString(), lec.getLectureNum());
                 res += text;
             }catch (Exception e){
