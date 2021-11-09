@@ -40,6 +40,18 @@ public class StGroup implements IEntity {
         return amountOfStudents;
     }
 
+    public void setAmountOfStudents(int amountOfStudents) {
+        this.amountOfStudents = amountOfStudents;
+    }
+
+    public int increaseAmountOfStudents(){
+        return ++amountOfStudents;
+    }
+
+    public int decreaseAmountOfStudents(){
+        return --amountOfStudents;
+    }
+
     public int getYearOfStudying() {
         return yearOfStudying;
     }

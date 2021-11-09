@@ -1,30 +1,50 @@
 package sb.com.project.BL;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import sb.com.project.BL.Users.Lecturer;
 import org.springframework.stereotype.Component;
 
-@Component
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
+@Entity
 public class Lecture implements IEntity {
 
-    private int idLecture;
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     private Lecturer lecturer;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     private StGroup group;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     private Subject subject;
     private int audienceNum;
-    private WeekDay weekDay;
+
+    @Min(value = 1)
+    @Max(value = 7)
+    private Integer weekDay;
     private int lectureNum;
+
 
     public Lecture(){}
 
     public Lecture(Lecturer lecturer, StGroup group, Subject subject,
-                   int aNum, WeekDay weekDay, int lNum){
+                   int aNum, int weekDay, int lNum){
         this.lectureNum = lNum;
         this.lecturer = lecturer;
         this.group = group;
         this.subject = subject;
         audienceNum = aNum;
         this.weekDay = weekDay;
-        idLecture = 1;
+        //idLecture = 1;
         System.out.println(lecturer.getClass());
     }
 
@@ -61,11 +81,11 @@ public class Lecture implements IEntity {
         this.audienceNum = audienceNum;
     }
 
-    public WeekDay getWeekDay() {
+    public int getWeekDay() {
         return weekDay;
     }
 
-    public void setWeekDay(WeekDay weekDay) {
+    public void setWeekDay(int weekDay) {
         this.weekDay = weekDay;
     }
 
@@ -78,6 +98,10 @@ public class Lecture implements IEntity {
     }
 
     public int getId(){
-        return  idLecture;
+        return  id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

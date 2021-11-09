@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Component
-public abstract class User implements IEntity {
+public abstract class User {
 //    protected int idUser;
     protected String firstName;
     protected String lastName;
@@ -81,9 +81,6 @@ public abstract class User implements IEntity {
         this.email = email;
     }
 
-    @Override
-    public int getId(){
-        return getId();
-    }
+
 
 }

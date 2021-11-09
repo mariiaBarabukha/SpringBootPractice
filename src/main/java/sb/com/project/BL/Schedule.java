@@ -30,7 +30,7 @@ public class Schedule {
             try {
                 String text = String.format("%s | %s | %s | %d | %s | %d\n", lec.getLecturer().getFullName(),
                         lec.getGroup().getName_group(), lec.getSubject().getSbName(), lec.getAudienceNum(),
-                        lec.getWeekDay().toString(), lec.getLectureNum());
+                        lec.getWeekDay(), lec.getLectureNum());
                 res += text;
             }catch (Exception e){
                 res += (e.toString()+'\n');

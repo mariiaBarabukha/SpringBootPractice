@@ -3,37 +3,10 @@
     <appender name="STDOUT"
               class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%X{user}] [%X{executionStep}] %-5level %logger{36} - %msg%n</pattern>
-        </encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>        </encoder>
     </appender>
 
-<!--    <appender name="FILE"-->
-<!--              class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-<!--        <file>test.log</file>-->
-<!--        <rollingPolicy-->
-<!--                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
-<!--            <fileNamePattern>test.%d{yyyy-MM-dd}.log</fileNamePattern>-->
-<!--            <maxHistory>10</maxHistory>-->
-<!--            <totalSizeCap>10GB</totalSizeCap>-->
 
-<!--        </rollingPolicy>-->
-<!--        <discriminator class="sb.com.project.MarkerDiscriminator">-->
-<!--            <key>importance</key>-->
-<!--            <defaultValue>not_important</defaultValue>-->
-<!--        </discriminator>-->
-<!--        <layout class="ch.qos.logback.contrib.json.classic.JsonLayout">-->
-<!--            <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter">-->
-<!--                <prettyPrint>true</prettyPrint>-->
-<!--            </jsonFormatter>-->
-<!--            <timestampFormat>yyyy-MM-dd' 'HH:mm:ss.SSS</timestampFormat>-->
-<!--            <appendLineSeparator>true</appendLineSeparator>-->
-<!--            <includeContextName>false</includeContextName>-->
-<!--        </layout>-->
-
-<!--&lt;!&ndash;        <encoder>&ndash;&gt;-->
-<!--&lt;!&ndash;            <pattern>%d{HH:mm:ss.SSS} [%X{user}] [%X{executionStep}] %-5level %logger{36} - %msg%n</pattern>&ndash;&gt;-->
-<!--&lt;!&ndash;        </encoder>&ndash;&gt;-->
-<!--    </appender>-->
 
 
     <appender name="FILE" class="ch.qos.logback.classic.sift.SiftingAppender">
@@ -59,7 +32,7 @@
     </appender>
 
     <root level="debug">
-        <appender-ref ref="STDOUT" />
+<!--        <appender-ref ref="STDOUT" />-->
         <appender-ref ref="FILE" />
     </root>
 </configuration>

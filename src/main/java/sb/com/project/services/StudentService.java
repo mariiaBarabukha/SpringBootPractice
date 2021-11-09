@@ -1,6 +1,7 @@
 package sb.com.project.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sb.com.project.BL.StGroup;
@@ -15,9 +16,9 @@ public class StudentService {
     IStudentRepository studentRepository;
 
     @Transactional
-    public String addStudent(Student student){
+    public String addStudent(Student student, int id){
         try {
-//            student.setGroup(new StGroup());
+            //student.setGroup(new StGroup());
             System.out.println(student);
             studentRepository.save(student);
             return "Student added!";
@@ -26,9 +27,9 @@ public class StudentService {
         }
     }
 
-    public List<Student> readStudents(){
-        return studentRepository.findAll();
-    }
+//    public List<Student> readStudents(Pageable pageable){
+//        return studentRepository.findAll(pageable);
+//    }
 
     @Transactional
     public String updateStudent(int id, Student student){
